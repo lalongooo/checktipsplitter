@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="validator_email">Tu correo electrónico es inválido</string>
+    <string name="validator_empty">Este campo no debe estar vacío</string>
+    <string name="validator_phone">Por favor, captura un número de teléfono valido</string>
+    <string name="validator_url">The URL entered is incorrect.</string>
+    <string name="validator_confirm">The confirm field is not valid.</string>
+    <string name="validator_alnum">The value has not only alnum characters.</string>
+    <string name="validator_hex">The value has not only hexadecimal digit characters.</string>
+    <string name="validator_regexp">The value does not match against pattern.</string>
+    <string name="validator_range">The value is not between the required range.</string>
+    <string name="validator_date">The entered date is not valid.</string>
+    <string name="validator_ip">The ip address is not valid.</string>
+    <string name="validator_num">Inputed text contains something that isn\'t numeric.</string>
+    <string name="app_name">Permutas SEP</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_post">Publicar permuta</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_about">Acerca de</string>
+    <string name="tos_welcome_to_ps_app">¡Gracias por usar Permutas SEP!</string>
+    <string name="tos_welcome_text">Antes de comenzar, considera leer esta importante información legal referente al uso de esta aplicación. ¡Solo te tomará un minuto!</string>
+    <string name="about_activity_description">Este proyecto ha sido posible gracias a software de código abierto. Por favor, encuentre a continuación la información de este estupendo software.</string>
+    <string name="about_activity_title">Acerca de</string>
+    <string name="wizard_contact_suggest_data_completion_dialog_msg">Si completas los datos en esta seccion, podrán contactarte con mayor facilidad. Presiona Siguiente si no quieres agregar mayor información</string>
+    <string name="wizard_post_text_label">Información adicional</string>
+    <string name="welcome_message">Te queremos ayudar haciéndole honor al dicho \"Cuentas claras, amistades largas\"</string>
+    <string name="wizard_post_text_hint">p. ej. "Escuela bien ubicada"</string>
+    <string name="wizard_post_dlg_title">Espera...</string>
+    <string name="wizard_post_dlg_text">Estamos publicando tu permuta</string>
+    <string name="app_overview_1st_item_text">Queremos que la información esté al alcance de todos</string>
+    <string name="app_overview_2nd_item_text">Creemos que nuestra solución hará a mas personas felices</string>
+    <string name="app_overview_3rd_item_text">Esperamos que encuentres pronto tu permuta&#8230;de verdad.</string>
+    <string name="app_overview_4th_item_text">Si crees importante este aporte, considera una donación.</string>
+    <string name="app_overview_start_button">Comenzar a publicar!</string>
+    <string name="app_overview_signup_button">Registrarse</string>
+    <string name="edit_profile_button_edit">Actualizar datos</string>
+    <string name="app_sign_up">Registrarme</string>
+    <string name="app_sign_up_facebook_login_button">Registrarme con Facebook</string>
+    <string name="app_sign_up_finish_fb_registration">Terminar registro</string>
+    <string name="app_sign_up_finish_fb_text">Completa la información necesaria para tu registro:</string>
+    <string name="app_sign_up_hint_name">Tu nombre</string>
+    <string name="app_sign_up_hint_email">Tu correo</string>
+    <string name="app_sign_up_hint_password">Tu contraseña</string>
+    <string name="app_sign_up_log_in_with">O registrate con</string>
+    <string name="app_sign_up_log_reg_dlg_title">Espera...</string>
+    <string name="app_sign_up_log_reg_dlg_text">Te estamos registrando</string>
+    <string name="network_availability_dlg_text">Su dispositivo no tiene acceso a Internet.</string>
+    <string name="search_state_prompt">Estado</string>
+    <string name="search_city_prompt">Municipio</string>
+    <string name="search_town_prompt">Localidad</string>
+    <string name="search_fragment_origin_label">Origen</string>
+    <string name="search_fragment_target_label">Destino</string>
+    <string name="search_fragment_btn_search">Buscar</string>
+    <string name="search_fragment_dlg_title">Espera</string>
+    <string name="search_fragment_dlg_text">Buscando...</string>
+    <string name="search_fragment_filters_error_msg">Ocurrió un error en tu búsqueda</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="error">Error</string>
+    <string name="search_fragment_search_error_msg">Ocurrió un error en tu búsqueda</string>
+    <string name="search_fragment_search_no_restlts">No se encontraron resultados</string>
+    <string name="new_password_forgot_password_message">Olvidé mi contraseña</string>
+    <string name="new_password_toolbar_title">Cambiar contraseña</string>
+    <string name="new_password_label">Restablece tu contraseña</string>
+    <string name="new_password_capure_email_label">Encuentra tu cuenta de Permutas SEP</string>
+    <string name="new_password_capure_email_msg">Ingresa tu correo electrónico</string>
+    <string name="new_password_capure_email_hint">Correo electrónico</string>
+    <string name="new_password_capure_email_wrong">No pudimos encontrar tu cuenta con esa información</string>
+    <string name="new_password_capure_email_loading">Estamos buscando tu correo electrónico</string>
+    <string name="new_password_capure_outdated_url">El enlace de restablecimiento en el que has hecho clic ha expirado. Por favor, solicita uno nuevo.</string>
+    <string name="new_password_email_sent_label">Revisa tu correo electrónico</string>
+    <string name="new_password_email_sent_msg_1">Hemos enviado un correo electrónico a %1$s.</string>
+    <string name="new_password_email_sent_msg_2">Haz clic en el enlace del correo electrónico para restablecer tu contraseña.</string>
+    <string name="new_password_email_sent_msg_3">Si no ves el correo electrónico en tu bandeja de entrada, revisa otras carpetas donde podría estar, como tus carpetas de correo electrónico no deseado, sociales </string>
+    <string name="new_password_recommendation">Las contraseñas fuertes incluyen números, letras y signos de puntuación.</string>
+    <string name="new_password_first_label">Contraseña nueva</string>
+    <string name="new_password_second_label">Repite tu contraseña nueva</string>
+    <string name="new_password_passwords_mismatch">Las contraseñas no coinciden</string>
+    <string name="new_password_resetting_password">Restableciendo tu contraseña</string>
+    <string name="new_password_reset">Enviar</string>
+    <string name="new_password_login_error">Tu contraseña fué restablecida correctamente. Sin embargo, ocurrió un error al iniciar sesión. Por favor, intenta de nuevo.</string>
+    <string name="new_password_request_new_token">Solicitar nuevo enlace</string>
+    <string name="new_password_password_length_error">La longitud debe ser entre %1$s-%2$s caracteres</string>
+    <string name="new_password_malformed_url">Dirección inválida</string>
+    <string name="my_posts_toolbar_text">Mis publicaciones</string>
+    <string name="app_login_sign_up_already_have_account">Ya tengo cuenta</string>
+    <string name="app_login_sign_up_log_in">Iniciar sesión</string>
+    <string name="app_login_sign_up_want_to_register">No tengo cuenta</string>
+    <string name="app_login_sign_up_want_to_register_cta">Registrarme</string>
+    <string name="app_login_sign_up_user_exist">Ya te encuentras registrado, por favor, inicia sesión.</string>
+    <string name="app_login_sign_up_continue"><u>Entrar como anónimo</u></string>
+    <string name="app_login_username">Tu correo electrónico</string>
+    <string name="app_login_password">Tu contraseña</string>
+    <string name="app_login_fb_dlg_on_cancel">El inicio de sesión fue cancelado</string>
+    <string name="app_login_fb_dlg_on_error">Ocurrió un error. Intenta de nuevo</string>
+    <string name="app_login_fb_dlg_missing_email_title">Email</string>
+    <string name="app_login_fb_dlg_missing_email_text">No obtuvimos tu email de Facebook, por favor captura tu email.</string>
+    <string name="app_login_fb_dlg_wrong_email">Por favor, captura un email válido</string>
+    <string name="app_login_btn_login">Iniciar sesión</string>
+    <string name="app_login_dlg_login_title">Iniciar sesión</string>
+    <string name="app_login_dlg_login_err_text">Usuario o contraseña incorrectos</string>
+    <string name="app_login_dlg_login_err_not_registered_text">Usuario no registrado</string>
+    <string name="app_login_dlg_login_logging_in">Iniciando sesión</string>
+    <string name="app_login_login_with_fb">O iniciar sesión con</string>
+    <string name="app_login_btn_login_with_fb">Iniciar sesión con Facebook</string>
+    <string name="app_news_feed_dlg_title">Espera...</string>
+    <string name="app_news_feed_dlg_text">Cargando publicaciones</string>
+    <string name="app_news_feed_get_posts_err">Servicio no disponible. Intenta mas tarde</string>
+    <string name="app_nav_drawer_1">Inicio</string>
+    <string name="app_nav_drawer_2">Mis publicaciones</string>
+    <string name="app_nav_drawer_3">Editar Perfil</string>
+    <string name="app_post_detail_call">Llamar</string>
+    <string name="app_post_detail_email">Email</string>
+    <string name="tos_dialog_text">Al seleccionar \"Aceptar\" usted acepta los Términos y condiciones del uso de esta aplicación.</string>
+    <string name="tos_dialog_cancel">Cancelar</string>
+    <string name="tos_dialog_accept">Aceptar</string>
+    <string name="act_splash_cont_descr">Application icon</string>
+    <string name="act_splash_by_lalongooo">By @lalongooo</string>
+    <string name="next">Siguiente</string>
+    <string name="prev">Regresar</string>
+    <string name="finish">Publicar permuta</string>
+    <string name="review">Revisa tu información</string>
+    <string name="label_your_name">Tu nombre</string>
+    <string name="label_your_email">Tu correo</string>
+    <string name="label_your_phone">Tu teléfono</string>
+    <string name="label_your_password">Tu contraseña</string>
+    <string name="label_your_state">Tu estado</string>
+    <string name="label_your_municipality">Tu municipio</string>
+    <string name="label_your_locality">Tu localidad</string>
+    <string name="hint_your_name">Tu nombre</string>
+    <string name="hint_your_email">Tu correo</string>
+    <string name="hint_your_phone">Tu teléfono</string>
+    <string name="hint_your_password">Tu contraseña</string>
+    <string name="submit_confirm_message">Presiona Aceptar para publicar tu permuta</string>
+    <string name="submit_confirm_button">Aceptar</string>
+    <string name="app_main_toolbar_post_action">Publicar permuta</string>
+    <string name="app_main_toolbar_search_action">Búsqueda</string>
+    <string name="app_main_toolbar_search_results">Resultados</string>
+    <string name="app_main_toolbar_edit_profile">Editar perfil</string>
+    <string name="main_select_state">Selecciona Estado</string>
+    <string name="main_loading_cities">Cargando ciudades</string>
+    <string name="main_loading_localities">Cargando localidades</string>
+    <string name="please_wait">Por favor, espera...</string>
+    <string name="time_ago_prefix"></string>
+    <string name="time_ago_suffix"></string>
+    <string name="time_ago_seconds">menos de un minuto</string>
+    <string name="time_ago_minute">1 minuto</string>
+    <string name="time_ago_minutes">%d minutos</string>
+    <string name="time_ago_hour">Hace 1 hora</string>
+    <string name="time_ago_hours">Hace %d horas</string>
+    <string name="time_ago_day">1 dia</string>
+    <string name="time_ago_days">%d dias</string>
+    <string name="time_ago_month">Hace 1 mes</string>
+    <string name="time_ago_months">%d meses</string>
+    <string name="time_ago_year">Hace 1 año</string>
+    <string name="time_ago_years">%d años</string>
+
+    <!--GA Events Categories-->
+    <string name="ga_event_category_ux">UX</string>
+
+    <!--GA Event Actions-->
+    <string name="ga_event_action_click">CLICK</string>
+    <string name="ga_event_action_swipe">SWIPE</string>
+
+
+    <string name="ga_fb_login_action_label_on_completed">FBLogin:onCompleted</string>
+    <string name="ga_fb_login_action_label_authorized_email">FBLogin:authorizedEmail</string>
+    <string name="ga_fb_login_action_label_unauthorized_email">FBLogin:unAuthorizedEmail</string>
+    <string name="ga_login_action_label_bad_userorpassword">Login:BadUserOrPassword</string>
+    <string name="ga_login_action_label_success">Login:Success</string>
+    <string name="ga_login_action_anonymous">Login:Anonymous</string>
+    <string name="ga_call_intent">Intent:Call</string>
+    <string name="ga_mail_intent">Intent:Mail</string>
+
+    <string-array name="states">
+        <item>Todo México</item>
+        <item>Aguascalientes</item>
+        <item>Baja California</item>
+        <item>Baja California Sur</item>
+        <item>Campeche</item>
+        <item>Coahuila de Zaragoza</item>
+        <item>Colima</item>
+        <item>Chiapas</item>
+        <item>Chihuahua</item>
+        <item>Distrito Federal</item>
+        <item>Durango</item>
+        <item>Guanajuato</item>
+        <item>Guerrero</item>
+        <item>Hidalgo</item>
+        <item>Jalisco</item>
+        <item>México</item>
+        <item>Michoacán de Ocampo</item>
+        <item>Morelos</item>
+        <item>Nayarit</item>
+        <item>Nuevo León</item>
+        <item>Oaxaca</item>
+        <item>Puebla</item>
+        <item>Querétaro</item>
+        <item>Quintana Roo</item>
+        <item>San Luis Potosí</item>
+        <item>Sinaloa</item>
+        <item>Sonora</item>
+        <item>Tabasco</item>
+        <item>Tamaulipas</item>
+        <item>Tlaxcala</item>
+        <item>Veracruz de Ignacio de la Llave</item>
+        <item>Yucatán</item>
+        <item>Zacatecas</item>
+    </string-array>
+
+    <string-array name="state_codes">
+        <item>ALL</item>
+        <item>AGU</item>
+        <item>BCN</item>
+        <item>BCS</item>
+        <item>CAM</item>
+        <item>COA</item>
+        <item>COL</item>
+        <item>CHP</item>
+        <item>CHH</item>
+        <item>DIF</item>
+        <item>DUR</item>
+        <item>GUA</item>
+        <item>GRO</item>
+        <item>HID</item>
+        <item>JAL</item>
+        <item>MEX</item>
+        <item>MIC</item>
+        <item>MOR</item>
+        <item>NAY</item>
+        <item>NLE</item>
+        <item>OAX</item>
+        <item>PUE</item>
+        <item>QUE</item>
+        <item>ROO</item>
+        <item>SLP</item>
+        <item>SIN</item>
+        <item>SON</item>
+        <item>TAB</item>
+        <item>TAM</item>
+        <item>TLA</item>
+        <item>VER</item>
+        <item>YUC</item>
+        <item>ZAC</item>
+    </string-array>
+
+</resources>

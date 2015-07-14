@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#E57309</color>
+    <color name="step_pager_previous_tab_color">@color/primary_light</color>
+    <color name="step_pager_selected_tab_color">@color/primary</color>
+    <color name="step_pager_selected_last_tab_color">@color/primary</color>
+    <color name="step_pager_next_tab_color">#66000000</color>
+    <color name="review_green">@color/primary</color>
+    <color name="text_light">@color/primary</color>
+
+    <color name="body_text_2">#8a000000</color>
+    <color name="error_message">#DD2E44</color>
+</resources>

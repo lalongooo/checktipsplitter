@@ -1,0 +1,27 @@
+{  
+   "mUser":{  
+      "email":"hdez.jeduardo@gmail.com",
+      "name":"Jorge E. Hernández",
+      "password":"",
+      "phone":""
+   },
+   "mPlaceFrom":{  
+      "lon":1012609.0,
+      "lat":271812.0,
+      "city":103,
+      "state":5,
+      "town":15
+   },
+   "mPlaceTo":{  
+      "lon":923708.0,
+      "lat":165740.0,
+      "city":165,
+      "state":7,
+      "town":1
+   },
+   "mWorkdayType":"Jornada ampliada",
+   "mPositionType":"Estatal",
+   "mPostDate":"Apr 8, 2015 9:11:21 PM",
+   "mIsTeachingCareer":false,
+   "text":"Escuela muy bien ubicada. De organizacion completa"
+}
