@@ -44,16 +44,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lalongooo.permutassep.R;
 import com.permutassep.BaseFragment;
-import com.permutassep.adapter.PostTypeAdapter;
 import com.permutassep.config.Config;
 import com.permutassep.model.City;
-import com.permutassep.model.WizardModel;
 import com.permutassep.model.Post;
 import com.permutassep.model.State;
 import com.permutassep.model.Town;
+import com.permutassep.model.WizardModel;
 import com.permutassep.rest.permutassep.PermutasSEPRestClient;
 import com.permutassep.utils.PrefUtils;
-import com.permutassep.utils.Utils;
 
 import java.util.Date;
 import java.util.List;
@@ -165,7 +163,7 @@ public class FragmentCreatePost extends BaseFragment implements
                                                 switch (p.getKey()){
                                                     case WizardModel.CONTACT_INFO_KEY:
                                                         // TODO: Use the Utils class to retrieve the current logged user
-                                                        post.setUser(Utils.getUser(getActivity()));
+                                                        post.setUser(null);
                                                         break;
                                                     case WizardModel.CITY_FROM_KEY:
                                                         State sf = p.getData().getParcelable(ProfessorCityFromPage.STATE_DATA_KEY);
@@ -211,8 +209,6 @@ public class FragmentCreatePost extends BaseFragment implements
                                             showDialog(getString(R.string.wizard_post_dlg_title), getString(R.string.wizard_post_dlg_text));
 
                                             GsonBuilder gsonBuilder = new GsonBuilder()
-                                                    // .registerTypeHierarchyAdapter(User.class, new UserTypeAdapter(getActivity()))
-                                                    .registerTypeHierarchyAdapter(Post.class, new PostTypeAdapter(getActivity()))
                                                     .setDateFormat(Config.APP_DATE_FORMAT);
                                             Gson gson = gsonBuilder.create();
 
