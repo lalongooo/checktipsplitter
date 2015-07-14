@@ -5,7 +5,7 @@ android {
     buildToolsVersion '21.1.2'
 
     defaultConfig {
-        applicationId "com.permutassep"
+        applicationId "com.checktipsplitter"
         minSdkVersion 14
         targetSdkVersion 21
     }

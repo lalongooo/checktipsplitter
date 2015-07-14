@@ -17,7 +17,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 
-import com.lalongooo.permutassep.R;
+import com.checktipsplitter.R;
 import com.permutassep.model.State;
 
 import org.apache.http.NameValuePair;

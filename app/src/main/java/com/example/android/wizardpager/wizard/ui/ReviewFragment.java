@@ -28,11 +28,11 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.AbstractWizardModel;
 import com.example.android.wizardpager.wizard.model.ModelCallbacks;
 import com.example.android.wizardpager.wizard.model.Page;
 import com.example.android.wizardpager.wizard.model.ReviewItem;
-import com.lalongooo.permutassep.R;
 import com.permutassep.ui.ActivityMain;
 
 import java.util.ArrayList;

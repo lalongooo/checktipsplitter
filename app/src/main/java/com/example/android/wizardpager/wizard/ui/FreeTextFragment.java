@@ -30,8 +30,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.FreeTextPage;
-import com.lalongooo.permutassep.R;
 import com.permutassep.ui.ActivityMain;
 
 public class FreeTextFragment extends Fragment {

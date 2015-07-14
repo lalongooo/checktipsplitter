@@ -14,8 +14,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.PostTextPage;
-import com.lalongooo.permutassep.R;
 import com.permutassep.ui.ActivityMain;
 
 /**

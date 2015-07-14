@@ -28,9 +28,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.MultipleFixedChoicePage;
 import com.example.android.wizardpager.wizard.model.Page;
-import com.lalongooo.permutassep.R;
 import com.permutassep.ui.ActivityMain;
 
 import java.util.ArrayList;

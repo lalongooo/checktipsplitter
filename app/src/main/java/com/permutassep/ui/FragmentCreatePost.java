@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.AbstractWizardModel;
 import com.example.android.wizardpager.wizard.model.ModelCallbacks;
 import com.example.android.wizardpager.wizard.model.Page;
@@ -42,7 +43,6 @@ import com.example.android.wizardpager.wizard.ui.ReviewFragment;
 import com.example.android.wizardpager.wizard.ui.StepPagerStrip;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.lalongooo.permutassep.R;
 import com.permutassep.BaseFragment;
 import com.permutassep.config.Config;
 import com.permutassep.model.City;

@@ -2,7 +2,7 @@ package com.permutassep.rest.permutassep;
 
 import android.util.Base64;
 
-import com.lalongooo.permutassep.BuildConfig;
+import com.checktipsplitter.BuildConfig;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;

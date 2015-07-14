@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import com.lalongooo.permutassep.R;
+import com.checktipsplitter.R;
 import com.permutassep.BaseActivity;
 
 public class ActivityMain extends BaseActivity {

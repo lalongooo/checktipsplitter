@@ -3,7 +3,7 @@ package com.permutassep.utils;
 import android.content.Context;
 import android.content.res.Resources;
 
-import com.lalongooo.permutassep.R;
+import com.checktipsplitter.R;
 
 import java.util.Date;
 

@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.WelcomePage;
-import com.lalongooo.permutassep.R;
 import com.permutassep.ui.ActivityMain;
 
 /**

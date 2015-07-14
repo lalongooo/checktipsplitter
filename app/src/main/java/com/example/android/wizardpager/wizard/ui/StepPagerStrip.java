@@ -27,7 +27,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.lalongooo.permutassep.R;
+import com.checktipsplitter.R;
 
 public class StepPagerStrip extends View {
     private static final int[] ATTRS = new int[]{
