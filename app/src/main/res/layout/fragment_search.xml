@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/WizardPageContainer"
     android:padding="10dp"
-    tools:context="com.permutassep.ui.FragmentSearch">
+    tools:context="com.checktipsplitter.ui.FragmentSearch">
 
     <FrameLayout
         android:layout_width="match_parent"

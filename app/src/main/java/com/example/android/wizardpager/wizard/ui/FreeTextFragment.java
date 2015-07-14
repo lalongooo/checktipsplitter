@@ -32,7 +32,7 @@ import android.widget.TextView;
 
 import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.FreeTextPage;
-import com.permutassep.ui.ActivityMain;
+import com.checktipsplitter.ui.ActivityMain;
 
 public class FreeTextFragment extends Fragment {
     private static final String ARG_KEY = "key";

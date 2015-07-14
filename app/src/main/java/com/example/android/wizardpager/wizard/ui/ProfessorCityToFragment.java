@@ -35,14 +35,14 @@ import android.widget.TextView;
 import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.Page;
 import com.example.android.wizardpager.wizard.model.ProfessorCityToPage;
-import com.permutassep.adapter.CitySpinnerBaseAdapter;
-import com.permutassep.adapter.StateSpinnerBaseAdapter;
-import com.permutassep.adapter.TownSpinnerBaseAdapter;
-import com.permutassep.model.City;
-import com.permutassep.model.State;
-import com.permutassep.model.Town;
-import com.permutassep.rest.inegifacil.InegiFacilRestClient;
-import com.permutassep.ui.ActivityMain;
+import com.checktipsplitter.adapter.CitySpinnerBaseAdapter;
+import com.checktipsplitter.adapter.StateSpinnerBaseAdapter;
+import com.checktipsplitter.adapter.TownSpinnerBaseAdapter;
+import com.checktipsplitter.model.City;
+import com.checktipsplitter.model.State;
+import com.checktipsplitter.model.Town;
+import com.checktipsplitter.rest.inegifacil.InegiFacilRestClient;
+import com.checktipsplitter.ui.ActivityMain;
 
 import java.util.ArrayList;
 

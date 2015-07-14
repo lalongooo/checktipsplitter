@@ -31,7 +31,7 @@ import android.widget.TextView;
 import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.MultipleFixedChoicePage;
 import com.example.android.wizardpager.wizard.model.Page;
-import com.permutassep.ui.ActivityMain;
+import com.checktipsplitter.ui.ActivityMain;
 
 import java.util.ArrayList;
 import java.util.HashSet;

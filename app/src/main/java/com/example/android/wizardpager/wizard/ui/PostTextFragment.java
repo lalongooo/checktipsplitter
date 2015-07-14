@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.checktipsplitter.R;
 import com.example.android.wizardpager.wizard.model.PostTextPage;
-import com.permutassep.ui.ActivityMain;
+import com.checktipsplitter.ui.ActivityMain;
 
 /**
  * Created by lalongooo on 08/04/15.

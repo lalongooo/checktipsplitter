@@ -1,4 +1,4 @@
-package com.permutassep;
+package com.checktipsplitter;
 
 import com.lalongooo.permutassep.BuildConfig;
 

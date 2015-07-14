@@ -4,9 +4,9 @@ package com.example.android.wizardpager.wizard.model;
 import android.support.v4.app.Fragment;
 
 import com.example.android.wizardpager.wizard.ui.ProfessorCityToFragment;
-import com.permutassep.model.City;
-import com.permutassep.model.State;
-import com.permutassep.model.Town;
+import com.checktipsplitter.model.City;
+import com.checktipsplitter.model.State;
+import com.checktipsplitter.model.Town;
 
 import java.util.ArrayList;
 

@@ -33,7 +33,7 @@ import com.example.android.wizardpager.wizard.model.AbstractWizardModel;
 import com.example.android.wizardpager.wizard.model.ModelCallbacks;
 import com.example.android.wizardpager.wizard.model.Page;
 import com.example.android.wizardpager.wizard.model.ReviewItem;
-import com.permutassep.ui.ActivityMain;
+import com.checktipsplitter.ui.ActivityMain;
 
 import java.util.ArrayList;
 import java.util.List;
