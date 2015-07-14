@@ -4,20 +4,15 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.widget.ImageView;
 
 import com.facebook.FacebookSdk;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Logger;
-import com.google.android.gms.analytics.Tracker;
-import com.lalongooo.permutassep.BuildConfig;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.squareup.picasso.Picasso;
 
-public class PermutasSEPApplication extends Application {
+public class MyApplication extends Application {
 
-    public PermutasSEPApplication() {
+    public MyApplication() {
         super();
     }
 
@@ -43,17 +38,5 @@ public class PermutasSEPApplication extends Application {
                 return null;
             }
         });
-    }
-
-    /**
-     * Retrieves the Tracker object to send hits to of Google Analytics
-     * */
-    public synchronized Tracker getTracker() {
-        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-        analytics.setDryRun(BuildConfig.DEBUG);
-        analytics.getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
-        Tracker t = analytics.newTracker(BuildConfig.google_analytics_property_id);
-        t.enableAdvertisingIdCollection(true);
-        return t;
     }
 }
