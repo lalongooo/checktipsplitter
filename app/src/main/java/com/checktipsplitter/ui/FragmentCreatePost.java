@@ -35,12 +35,12 @@ import com.checktipsplitter.BaseFragment;
 import com.checktipsplitter.R;
 import com.checktipsplitter.model.WizardModel;
 import com.checktipsplitter.utils.PrefUtils;
-import com.example.android.wizardpager.wizard.model.AbstractWizardModel;
-import com.example.android.wizardpager.wizard.model.ModelCallbacks;
-import com.example.android.wizardpager.wizard.model.Page;
-import com.example.android.wizardpager.wizard.ui.PageFragmentCallbacks;
-import com.example.android.wizardpager.wizard.ui.ReviewFragment;
-import com.example.android.wizardpager.wizard.ui.StepPagerStrip;
+import com.wizard.model.AbstractWizardModel;
+import com.wizard.model.ModelCallbacks;
+import com.wizard.model.Page;
+import com.wizard.ui.PageFragmentCallbacks;
+import com.wizard.ui.ReviewFragment;
+import com.wizard.ui.StepPagerStrip;
 
 import java.util.List;
 

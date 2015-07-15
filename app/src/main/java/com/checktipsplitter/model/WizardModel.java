@@ -2,11 +2,11 @@ package com.checktipsplitter.model;
 
 import android.content.Context;
 
-import com.example.android.wizardpager.wizard.model.AbstractWizardModel;
-import com.example.android.wizardpager.wizard.model.FreeTextPage;
-import com.example.android.wizardpager.wizard.model.PageList;
-import com.example.android.wizardpager.wizard.model.SingleFixedChoicePage;
-import com.example.android.wizardpager.wizard.model.WelcomePage;
+import com.wizard.model.AbstractWizardModel;
+import com.wizard.model.FreeTextPage;
+import com.wizard.model.PageList;
+import com.wizard.model.SingleFixedChoicePage;
+import com.wizard.model.WelcomePage;
 
 public class WizardModel extends AbstractWizardModel {
     public static final String WELCOME_PAGE__KEY = "welcome_page_key";
