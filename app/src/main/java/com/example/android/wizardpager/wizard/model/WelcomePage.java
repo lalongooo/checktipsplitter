@@ -6,9 +6,6 @@ import com.example.android.wizardpager.wizard.ui.WelcomeFragment;
 
 import java.util.ArrayList;
 
-/**
- * Created by lalongooo on 08/04/15.
- */
 public class WelcomePage extends Page {
 
     public WelcomePage(ModelCallbacks callbacks, String title) {

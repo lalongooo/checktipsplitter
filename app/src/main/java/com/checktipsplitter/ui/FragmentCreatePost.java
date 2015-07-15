@@ -31,34 +31,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.checktipsplitter.BaseFragment;
 import com.checktipsplitter.R;
+import com.checktipsplitter.model.WizardModel;
+import com.checktipsplitter.utils.PrefUtils;
 import com.example.android.wizardpager.wizard.model.AbstractWizardModel;
 import com.example.android.wizardpager.wizard.model.ModelCallbacks;
 import com.example.android.wizardpager.wizard.model.Page;
-import com.example.android.wizardpager.wizard.model.PostTextPage;
-import com.example.android.wizardpager.wizard.model.ProfessorCityFromPage;
-import com.example.android.wizardpager.wizard.model.ProfessorCityToPage;
 import com.example.android.wizardpager.wizard.ui.PageFragmentCallbacks;
 import com.example.android.wizardpager.wizard.ui.ReviewFragment;
 import com.example.android.wizardpager.wizard.ui.StepPagerStrip;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.checktipsplitter.BaseFragment;
-import com.checktipsplitter.config.Config;
-import com.checktipsplitter.model.City;
-import com.checktipsplitter.model.Post;
-import com.checktipsplitter.model.State;
-import com.checktipsplitter.model.Town;
-import com.checktipsplitter.model.WizardModel;
-import com.checktipsplitter.rest.permutassep.PermutasSEPRestClient;
-import com.checktipsplitter.utils.PrefUtils;
 
-import java.util.Date;
 import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.converter.GsonConverter;
 
 public class FragmentCreatePost extends BaseFragment implements
         PageFragmentCallbacks,
@@ -155,77 +139,6 @@ public class FragmentCreatePost extends BaseFragment implements
                                     .setPositiveButton(R.string.submit_confirm_button, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-
-                                            Post post = new Post();
-                                            post.setPostDate(new Date());
-
-                                            for (Page p : mWizardModel.getCurrentPageSequence()) {
-                                                switch (p.getKey()){
-                                                    case WizardModel.CONTACT_INFO_KEY:
-                                                        // TODO: Use the Utils class to retrieve the current logged user
-                                                        post.setUser(null);
-                                                        break;
-                                                    case WizardModel.CITY_FROM_KEY:
-                                                        State sf = p.getData().getParcelable(ProfessorCityFromPage.STATE_DATA_KEY);
-                                                        City cf = p.getData().getParcelable(ProfessorCityFromPage.MUNICIPALITY_DATA_KEY);
-                                                        Town tf = p.getData().getParcelable(ProfessorCityFromPage.LOCALITY_DATA_KEY);
-
-                                                        post.setStateFrom(sf.getId());
-                                                        post.setCityFrom(Short.valueOf(String.valueOf(cf.getClaveMunicipio())));
-                                                        post.setTownFrom(Short.valueOf(tf.getClave()));
-                                                        post.setLatFrom(tf.getLatitud());
-                                                        post.setLonFrom(tf.getLongitud());
-                                                        break;
-                                                    case WizardModel.CITY_TO_KEY:
-                                                        State st =  p.getData().getParcelable(ProfessorCityToPage.STATE_TO_DATA_KEY);
-                                                        City ct = p.getData().getParcelable(ProfessorCityToPage.MUNICIPALITY_TO_DATA_KEY);
-                                                        Town tt = p.getData().getParcelable(ProfessorCityToPage.LOCALITY_TO_DATA_KEY);
-
-                                                        post.setStateTo(st.getId());
-                                                        post.setCityTo(Short.valueOf(String.valueOf(ct.getClaveMunicipio())));
-                                                        post.setTownTo(Short.valueOf(tt.getClave()));
-                                                        post.setLatTo(tt.getLatitud());
-                                                        post.setLonTo(tt.getLongitud());
-
-                                                        break;
-                                                    case WizardModel.ACADEMIC_LEVEL_KEY:
-                                                        post.setAcademicLevel(p.getData().getString(Page.SIMPLE_DATA_KEY));
-                                                        break;
-                                                    case WizardModel.POSITION_TYPE_KEY:
-                                                        post.setPositionType(p.getData().getString(Page.SIMPLE_DATA_KEY));
-                                                        break;
-                                                    case WizardModel.WORKDAY_TYPE_KEY:
-                                                        post.setWorkdayType(p.getData().getString(Page.SIMPLE_DATA_KEY));
-                                                        break;
-                                                    case WizardModel.TEACHING_CAREER_KEY:
-                                                        post.setIsTeachingCareer(p.getData().getString(Page.SIMPLE_DATA_KEY).equals("Si") ? true : false);
-                                                        break;
-                                                    case WizardModel.POST_TEXT_KEY:
-                                                        post.setPostText(p.getData().getString(PostTextPage.TEXT_DATA_KEY));
-                                                        break;
-                                                }
-                                            }
-
-                                            showDialog(getString(R.string.wizard_post_dlg_title), getString(R.string.wizard_post_dlg_text));
-
-                                            GsonBuilder gsonBuilder = new GsonBuilder()
-                                                    .setDateFormat(Config.APP_DATE_FORMAT);
-                                            Gson gson = gsonBuilder.create();
-
-                                            new PermutasSEPRestClient(new GsonConverter(gson)).get().newPost(post, new Callback<Post>() {
-                                                @Override
-                                                public void success(Post post, retrofit.client.Response response) {
-                                                    replaceFragment();
-                                                    hideDialog();
-                                                }
-
-                                                @Override
-                                                public void failure(RetrofitError error) {
-                                                    // TODO: Add the error message dialog
-                                                    hideDialog();
-                                                }
-                                            });
-
                                         }
                                     })
                                     .setNegativeButton(android.R.string.cancel, null)

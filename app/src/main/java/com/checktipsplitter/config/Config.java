@@ -8,9 +8,9 @@ public class Config {
 	public static final String APP_PREFERENCES_NAME = "PERMUTAS_SEP_PREFERENCES";	
 
     /**
-     * Endpoint of the InegiFacil REST service
+     * Endpoint of the Mashape currency exchange service
      */
-    public static final String INEGI_FACIL_REST_BASE_URL = "http://inegifacil.com/";
+    public static final String MASHAPE_CURRENCY_EXCHANGE_URL = "https://currency-exchange.p.mashape.com/";
 
     /**
      * Date format used in the entire application

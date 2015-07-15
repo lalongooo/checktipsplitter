@@ -33,22 +33,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.checktipsplitter.R;
-import com.example.android.wizardpager.wizard.model.Page;
-import com.example.android.wizardpager.wizard.model.ProfessorCityToPage;
 import com.checktipsplitter.adapter.CitySpinnerBaseAdapter;
 import com.checktipsplitter.adapter.StateSpinnerBaseAdapter;
 import com.checktipsplitter.adapter.TownSpinnerBaseAdapter;
 import com.checktipsplitter.model.City;
 import com.checktipsplitter.model.State;
 import com.checktipsplitter.model.Town;
-import com.checktipsplitter.rest.inegifacil.InegiFacilRestClient;
 import com.checktipsplitter.ui.ActivityMain;
+import com.example.android.wizardpager.wizard.model.Page;
+import com.example.android.wizardpager.wizard.model.ProfessorCityToPage;
 
 import java.util.ArrayList;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 public class ProfessorCityToFragment extends Fragment {
     private static final String ARG_KEY = "key";
@@ -202,19 +197,19 @@ public class ProfessorCityToFragment extends Fragment {
                     mPage.notifyDataChanged();
 
                     try {
-                        InegiFacilRestClient.get().getCities(String.valueOf(selectedState.getId()), new Callback<ArrayList<City>>() {
-                            @Override
-                            public void success(ArrayList<City> cities, Response response) {
-                                mCities = cities;
-                                spnMunicipality.setAdapter(new CitySpinnerBaseAdapter(getActivity(), cities));
-                                hideDialog();
-                            }
-
-                            @Override
-                            public void failure(RetrofitError error) {
-                                hideDialog();
-                            }
-                        });
+//                        MashapeCurrencyExchangeRESTClient.get().getCities(String.valueOf(selectedState.getId()), new Callback<ArrayList<City>>() {
+//                            @Override
+//                            public void success(ArrayList<City> cities, Response response) {
+//                                mCities = cities;
+//                                spnMunicipality.setAdapter(new CitySpinnerBaseAdapter(getActivity(), cities));
+//                                hideDialog();
+//                            }
+//
+//                            @Override
+//                            public void failure(RetrofitError error) {
+//                                hideDialog();
+//                            }
+//                        });
 
                     }catch (Exception ex){
                         Log.d("An error ocurred", ex.getMessage());
@@ -248,19 +243,19 @@ public class ProfessorCityToFragment extends Fragment {
                     mPage.notifyDataChanged();
 
                     try {
-                        InegiFacilRestClient.get().getTowns(String.valueOf(selectedCity.getClaveEntidad()), String.valueOf(selectedCity.getClaveMunicipio()), new Callback<ArrayList<Town>>() {
-                            @Override
-                            public void success(ArrayList<Town> towns, Response response) {
-                                mTowns = towns;
-                                spnLocality.setAdapter(new TownSpinnerBaseAdapter(getActivity(), towns));
-                                hideDialog();
-                            }
-
-                            @Override
-                            public void failure(RetrofitError error) {
-                                hideDialog();
-                            }
-                        });
+//                        MashapeCurrencyExchangeRESTClient.get().getTowns(String.valueOf(selectedCity.getClaveEntidad()), String.valueOf(selectedCity.getClaveMunicipio()), new Callback<ArrayList<Town>>() {
+//                            @Override
+//                            public void success(ArrayList<Town> towns, Response response) {
+//                                mTowns = towns;
+//                                spnLocality.setAdapter(new TownSpinnerBaseAdapter(getActivity(), towns));
+//                                hideDialog();
+//                            }
+//
+//                            @Override
+//                            public void failure(RetrofitError error) {
+//                                hideDialog();
+//                            }
+//                        });
 
                     }catch (Exception ex){
                         Log.d("An error occurred", ex.getMessage());
