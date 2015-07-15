@@ -2,7 +2,6 @@ package com.checktipsplitter.rest.openexchangerates;
 
 import com.checktipsplitter.config.Config;
 
-import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
 public class OpenExchangeRatesRestClient {
@@ -21,16 +20,8 @@ public class OpenExchangeRatesRestClient {
 
     private static void setupRestClient() {
 
-        RequestInterceptor requestInterceptor = new RequestInterceptor() {
-            @Override
-            public void intercept(RequestFacade request) {
-                request.addHeader("X-Mashape-Key", "l3DQioyM7QmshMfWRKZdHuPHQF9Fp1Z56HLjsnGFWH9NFdYD4R");
-            }
-        };
-
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(Config.MASHAPE_CURRENCY_EXCHANGE_URL)
-                .setRequestInterceptor(requestInterceptor)
+                .setEndpoint(Config.OPEN_EXCHANGE_RATES_API_ENDPOINT)
                 .build();
 
         restClient = restAdapter.create(OpenExchangeRatesService.class);

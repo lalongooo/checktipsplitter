@@ -10,7 +10,12 @@ public class Config {
     /**
      * Endpoint of the Mashape currency exchange service
      */
-    public static final String MASHAPE_CURRENCY_EXCHANGE_URL = "https://currency-exchange.p.mashape.com/";
+    public static final String MASHAPE_CURRENCY_EXCHANGE_ENDPOINT = "https://currency-exchange.p.mashape.com/";
+
+	/**
+	 * Endpoint of the Mashape currency exchange service
+	 */
+	public static final String OPEN_EXCHANGE_RATES_API_ENDPOINT = "https://openexchangerates.org/api";
 
     /**
      * Date format used in the entire application

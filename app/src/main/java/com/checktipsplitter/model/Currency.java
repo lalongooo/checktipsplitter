@@ -4,7 +4,7 @@ package com.checktipsplitter.model;
 * By Jorge E. Hernandez (@lalongooo) 2015
 * */
 
-public class Quote {
+public class Currency {
     private String mQuoteKey;
     private String mQuoteDescription;
 

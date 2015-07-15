@@ -29,7 +29,7 @@ public class MashapeCurrencyExchangeRestClient {
         };
 
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(Config.MASHAPE_CURRENCY_EXCHANGE_URL)
+                .setEndpoint(Config.MASHAPE_CURRENCY_EXCHANGE_ENDPOINT)
                 .setRequestInterceptor(requestInterceptor)
                 .build();
 
