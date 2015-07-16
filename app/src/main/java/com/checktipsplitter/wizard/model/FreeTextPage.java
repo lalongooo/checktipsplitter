@@ -47,7 +47,7 @@ public class FreeTextPage extends Page {
 
     @Override
     public void getReviewItems(ArrayList<ReviewItem> dest) {
-        dest.add(new ReviewItem(displayText, mData.getString(NAME_DATA_KEY), NAME_DATA_KEY, -1));
+        dest.add(new ReviewItem(displayText, mData.getString(NAME_DATA_KEY), getKey(), -1));
     }
 
     @Override
