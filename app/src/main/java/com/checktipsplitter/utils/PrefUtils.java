@@ -32,18 +32,27 @@ public class PrefUtils {
         sp.edit().putString(PREF_CURRENCY_VALUES_DESCRIPTION, values).apply();
     }
 
-    public static List<Currency> getCurrencyValuesDescription(final Context context) {
+    public static String[] getCurrencyValuesDescription(final Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         String json = sp.getString(PREF_CURRENCY_VALUES_DESCRIPTION, null);
 
         List<Currency> currencies = null;
+        String[] sArray = null;
 
         if (json != null) {
-            Type listType = new TypeToken<ArrayList<Currency>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Currency>>() {
+            }.getType();
             currencies = new Gson().fromJson(json, listType);
+
+            if (currencies != null) {
+                sArray = new String[currencies.size()];
+                for (int i = 0; i < currencies.size(); i++) {
+                    sArray[i] = currencies.get(i).getQuoteKey() + " - " + currencies.get(i).getQuoteDescription();
+                }
+            }
         }
 
-        return currencies;
+        return sArray;
     }
 
     public static void saveLastExchangeRateSync(final Context context) {

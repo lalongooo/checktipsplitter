@@ -34,28 +34,25 @@ import android.widget.Button;
 import com.checktipsplitter.BaseFragment;
 import com.checktipsplitter.R;
 import com.checktipsplitter.model.WizardModel;
-import com.checktipsplitter.utils.PrefUtils;
 import com.checktipsplitter.wizard.model.AbstractWizardModel;
 import com.checktipsplitter.wizard.model.ModelCallbacks;
 import com.checktipsplitter.wizard.model.Page;
 import com.checktipsplitter.wizard.ui.PageFragmentCallbacks;
 import com.checktipsplitter.wizard.ui.ReviewFragment;
 import com.checktipsplitter.wizard.ui.StepPagerStrip;
-import com.checktipsplitter.wizard.ui.WelcomeFragment;
 
 import java.util.List;
 
 public class FragmentAddBill extends BaseFragment implements
         PageFragmentCallbacks,
         ReviewFragment.Callbacks,
-        ModelCallbacks,
-        WelcomeFragment.OnExchangeRateSyncComplete {
+        ModelCallbacks{
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
 
     private boolean mEditingAfterReview;
 
-    private AbstractWizardModel mWizardModel = new WizardModel(getActivity());
+    private AbstractWizardModel mWizardModel;
 
     private boolean mConsumePageSelectedEvent;
 
@@ -65,11 +62,12 @@ public class FragmentAddBill extends BaseFragment implements
 
     private List<Page> mCurrentPageSequence;
     private StepPagerStrip mStepPagerStrip;
-    boolean suggestDataCompletion = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_createpost, container, false);
+        mWizardModel = new WizardModel(getActivity());
+
         if (savedInstanceState != null) {
             mWizardModel.load(savedInstanceState.getBundle("model"));
         }
@@ -112,26 +110,7 @@ public class FragmentAddBill extends BaseFragment implements
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (suggestDataCompletion && mCurrentPageSequence.get(mPager.getCurrentItem()).getKey() == WizardModel.CONTACT_INFO_KEY) {
-
-                    DialogFragment dg = new DialogFragment() {
-                        @Override
-                        public Dialog onCreateDialog(Bundle savedInstanceState) {
-                            return new AlertDialog.Builder(getActivity())
-                                    .setMessage(R.string.wizard_contact_suggest_data_completion_dialog_msg)
-                                    .setPositiveButton(R.string.submit_confirm_button, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            suggestDataCompletion = false;
-                                        }
-                                    })
-                                    .create();
-                        }
-                    };
-                    dg.show(getActivity().getSupportFragmentManager(), "contact_data_dialog");
-
-                } else if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
+                if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
                     DialogFragment dg = new DialogFragment() {
                         @Override
                         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -194,12 +173,7 @@ public class FragmentAddBill extends BaseFragment implements
             }
             mNextButton.setEnabled(position != mPagerAdapter.getCutOffPage());
         }
-
-        if(PrefUtils.shouldSyncExchangeRates(getActivity()) && position <= 0){
-            mNextButton.setVisibility(View.INVISIBLE);
-        }
-
-        mPrevButton.setVisibility(position <= 0 ? View.INVISIBLE : View.VISIBLE);
+         mPrevButton.setVisibility(position <= 0 ? View.INVISIBLE : View.VISIBLE);
     }
 
     @Override
@@ -264,20 +238,6 @@ public class FragmentAddBill extends BaseFragment implements
         }
 
         return false;
-    }
-
-    private void showDialog(String title, String text) {
-        pDlg = ProgressDialog.show(getActivity(), title, text, true);
-    }
-
-    private void hideDialog() {
-        if (pDlg != null)
-            pDlg.dismiss();
-    }
-
-    @Override
-    public void exchangeRateSyncComplete() {
-        mNextButton.setVisibility(View.VISIBLE);
     }
 
     public class MyPagerAdapter extends FragmentStatePagerAdapter {
