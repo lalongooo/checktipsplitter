@@ -17,6 +17,6 @@ public class ActivityMain extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new FragmentCreatePost()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new FragmentAddBill()).commit();
     }
 }

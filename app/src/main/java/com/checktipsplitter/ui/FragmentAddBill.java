@@ -45,7 +45,7 @@ import com.checktipsplitter.wizard.ui.WelcomeFragment;
 
 import java.util.List;
 
-public class FragmentCreatePost extends BaseFragment implements
+public class FragmentAddBill extends BaseFragment implements
         PageFragmentCallbacks,
         ReviewFragment.Callbacks,
         ModelCallbacks,

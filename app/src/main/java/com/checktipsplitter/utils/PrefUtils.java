@@ -5,9 +5,15 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.checktipsplitter.Config;
+import com.checktipsplitter.model.Currency;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class PrefUtils {
 
@@ -16,7 +22,31 @@ public class PrefUtils {
     * */
     public static final String PREF_LAST_EXCHANGE_RATE_SYNC = "last_exch_rate_sync";
 
-    public static void setLastExchangeRateSync(final Context context) {
+    /**
+     * The currency options preferences key. These are updated when they're older than {@link Config#EXCHANGE_RATES_SYNC_TIME_INTERVAL}
+     */
+    public static final String PREF_CURRENCY_VALUES_DESCRIPTION = "pref_curr_values";
+
+    public static void saveCurrencyValuesDescription(final Context context, String values) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        sp.edit().putString(PREF_CURRENCY_VALUES_DESCRIPTION, values).apply();
+    }
+
+    public static List<Currency> getCurrencyValuesDescription(final Context context) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        String json = sp.getString(PREF_CURRENCY_VALUES_DESCRIPTION, null);
+
+        List<Currency> currencies = null;
+
+        if (json != null) {
+            Type listType = new TypeToken<ArrayList<Currency>>() {}.getType();
+            currencies = new Gson().fromJson(json, listType);
+        }
+
+        return currencies;
+    }
+
+    public static void saveLastExchangeRateSync(final Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         sp.edit().putLong(PREF_LAST_EXCHANGE_RATE_SYNC, new Date().getTime()).apply();
     }

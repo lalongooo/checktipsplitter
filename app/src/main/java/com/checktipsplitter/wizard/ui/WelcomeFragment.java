@@ -16,11 +16,13 @@ import com.checktipsplitter.rest.openexchangerates.OpenExchangeRatesRestClient;
 import com.checktipsplitter.utils.PrefUtils;
 import com.checktipsplitter.wizard.model.WelcomePage;
 import com.checktipsplitter.ui.ActivityMain;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import retrofit.Callback;
@@ -83,7 +85,7 @@ public class WelcomeFragment extends Fragment {
                         @Override
                         public void success(Response response) {
 
-                            ArrayList<Currency> currencies = new ArrayList<>();
+                            List<Currency> currencies = new ArrayList<>();
 
                             String responseText = new String(
                                     ((TypedByteArray) response.getBody()).getBytes()
@@ -101,7 +103,15 @@ public class WelcomeFragment extends Fragment {
                                 }
                             }
 
-                            PrefUtils.setLastExchangeRateSync(getActivity());
+
+
+
+                            PrefUtils.saveLastExchangeRateSync(getActivity());
+
+                            PrefUtils.saveCurrencyValuesDescription(getActivity(), new Gson().toJson(currencies));
+                            PrefUtils.getCurrencyValuesDescription(getActivity());
+
+
                             onExchangeRateSyncComplete.exchangeRateSyncComplete();
                             progressBar.setVisibility(View.INVISIBLE);
                         }
