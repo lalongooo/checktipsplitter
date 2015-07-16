@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.wizard.model;
+package com.checktipsplitter.wizard.model;
+
+import java.util.ArrayList;
 
 /**
- * Callback interface connecting {@link Page}, {@link com.wizard.model.AbstractWizardModel}, and model container
- * objects (e.g. {@link com.example.android.wizardpager.MainActivity}.
+ * Represents a node in the page tree. Can either be a single page, or a page container.
  */
-public interface ModelCallbacks {
-    void onPageDataChanged(Page page);
-    void onPageTreeChanged();
+public interface PageTreeNode {
+    public Page findByKey(String key);
+    public void flattenCurrentPageSequence(ArrayList<Page> dest);
 }

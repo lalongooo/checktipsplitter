@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wizard.ui;
+package com.checktipsplitter.wizard.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -29,8 +29,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.checktipsplitter.R;
-import com.wizard.model.MultipleFixedChoicePage;
-import com.wizard.model.Page;
+import com.checktipsplitter.wizard.model.MultipleFixedChoicePage;
+import com.checktipsplitter.wizard.model.Page;
 import com.checktipsplitter.ui.ActivityMain;
 
 import java.util.ArrayList;

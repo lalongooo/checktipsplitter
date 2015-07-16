@@ -1,9 +1,9 @@
-package com.wizard.model;
+package com.checktipsplitter.wizard.model;
 
 
 import android.support.v4.app.Fragment;
 
-import com.wizard.ui.ProfessorCityToFragment;
+import com.checktipsplitter.wizard.ui.ProfessorCityToFragment;
 import com.checktipsplitter.model.City;
 import com.checktipsplitter.model.State;
 import com.checktipsplitter.model.Town;

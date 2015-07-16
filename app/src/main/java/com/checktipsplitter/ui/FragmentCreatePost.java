@@ -35,19 +35,21 @@ import com.checktipsplitter.BaseFragment;
 import com.checktipsplitter.R;
 import com.checktipsplitter.model.WizardModel;
 import com.checktipsplitter.utils.PrefUtils;
-import com.wizard.model.AbstractWizardModel;
-import com.wizard.model.ModelCallbacks;
-import com.wizard.model.Page;
-import com.wizard.ui.PageFragmentCallbacks;
-import com.wizard.ui.ReviewFragment;
-import com.wizard.ui.StepPagerStrip;
+import com.checktipsplitter.wizard.model.AbstractWizardModel;
+import com.checktipsplitter.wizard.model.ModelCallbacks;
+import com.checktipsplitter.wizard.model.Page;
+import com.checktipsplitter.wizard.ui.PageFragmentCallbacks;
+import com.checktipsplitter.wizard.ui.ReviewFragment;
+import com.checktipsplitter.wizard.ui.StepPagerStrip;
+import com.checktipsplitter.wizard.ui.WelcomeFragment;
 
 import java.util.List;
 
 public class FragmentCreatePost extends BaseFragment implements
         PageFragmentCallbacks,
         ReviewFragment.Callbacks,
-        ModelCallbacks {
+        ModelCallbacks,
+        WelcomeFragment.OnExchangeRateSyncComplete {
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
 
@@ -111,7 +113,7 @@ public class FragmentCreatePost extends BaseFragment implements
             @Override
             public void onClick(View view) {
 
-                if(suggestDataCompletion && mCurrentPageSequence.get(mPager.getCurrentItem()).getKey() == WizardModel.CONTACT_INFO_KEY){
+                if (suggestDataCompletion && mCurrentPageSequence.get(mPager.getCurrentItem()).getKey() == WizardModel.CONTACT_INFO_KEY) {
 
                     DialogFragment dg = new DialogFragment() {
                         @Override
@@ -129,8 +131,7 @@ public class FragmentCreatePost extends BaseFragment implements
                     };
                     dg.show(getActivity().getSupportFragmentManager(), "contact_data_dialog");
 
-                }
-                else if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
+                } else if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
                     DialogFragment dg = new DialogFragment() {
                         @Override
                         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -188,10 +189,14 @@ public class FragmentCreatePost extends BaseFragment implements
             mNextButton.setText(mEditingAfterReview ? R.string.review : R.string.next);
             mNextButton.setBackgroundResource(R.drawable.selectable_item_background);
             mNextButton.setTextAppearance(getActivity(), R.style.TextAppearanceCapturing);
-            if (!mCurrentPageSequence.get(position).isCompleted()){
+            if (!mCurrentPageSequence.get(position).isCompleted()) {
                 mNextButton.setTextColor(getResources().getColor(android.R.color.darker_gray));
             }
             mNextButton.setEnabled(position != mPagerAdapter.getCutOffPage());
+        }
+
+        if(PrefUtils.shouldSyncExchangeRates(getActivity()) && position <= 0){
+            mNextButton.setVisibility(View.INVISIBLE);
         }
 
         mPrevButton.setVisibility(position <= 0 ? View.INVISIBLE : View.VISIBLE);
@@ -270,6 +275,11 @@ public class FragmentCreatePost extends BaseFragment implements
             pDlg.dismiss();
     }
 
+    @Override
+    public void exchangeRateSyncComplete() {
+        mNextButton.setVisibility(View.VISIBLE);
+    }
+
     public class MyPagerAdapter extends FragmentStatePagerAdapter {
         private int mCutOffPage;
         private Fragment mPrimaryItem;
@@ -322,10 +332,5 @@ public class FragmentCreatePost extends BaseFragment implements
         public int getCutOffPage() {
             return mCutOffPage;
         }
-    }
-
-    private void replaceFragment(){
-        PrefUtils.markNewsFeedToReload(getActivity(), true);
-        getActivity().getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 }

@@ -1,9 +1,9 @@
-package com.wizard.model;
+package com.checktipsplitter.wizard.model;
 
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import com.wizard.ui.PostTextFragment;
+import com.checktipsplitter.wizard.ui.PostTextFragment;
 
 import java.util.ArrayList;
 

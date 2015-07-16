@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wizard.model;
+package com.checktipsplitter.wizard.model;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

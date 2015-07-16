@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.wizard.model;
+package com.checktipsplitter.wizard.model;
 
 import android.support.v4.app.Fragment;
 
-import com.wizard.ui.MultipleChoiceFragment;
+import com.checktipsplitter.wizard.ui.MultipleChoiceFragment;
 
 import java.util.ArrayList;
 

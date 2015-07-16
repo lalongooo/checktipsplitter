@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wizard.ui;
+package com.checktipsplitter.wizard.ui;
 
 import android.content.Context;
 import android.content.res.Resources;

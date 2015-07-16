@@ -13,7 +13,7 @@
     <string name="validator_date">The entered date is not valid.</string>
     <string name="validator_ip">The ip address is not valid.</string>
     <string name="validator_num">Inputed text contains something that isn\'t numeric.</string>
-    <string name="app_name">Permutas SEP</string>
+    <string name="app_name">CheckTip+Splitter</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_post">Publicar permuta</string>
     <string name="action_search">Buscar</string>

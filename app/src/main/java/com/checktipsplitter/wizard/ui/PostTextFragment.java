@@ -1,20 +1,4 @@
-/*
- * Copyright 2013 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package com.wizard.ui;
+package com.checktipsplitter.wizard.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -31,30 +15,32 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.checktipsplitter.R;
-import com.wizard.model.FreeTextPage;
+import com.checktipsplitter.wizard.model.PostTextPage;
 import com.checktipsplitter.ui.ActivityMain;
 
-public class FreeTextFragment extends Fragment {
+/**
+ * Created by lalongooo on 08/04/15.
+ */
+public class PostTextFragment extends Fragment {
+
     private static final String ARG_KEY = "key";
 
     private PageFragmentCallbacks mCallbacks;
     private String mKey;
-    private FreeTextPage mPage;
-    private TextView  hint;
-    private EditText mNameView;
-    private String hintText;
+    private PostTextPage mPage;
+    private EditText mTextView;
 
-    public static FreeTextFragment create(String key, String hint) {
+
+    public static PostTextFragment create(String key) {
         Bundle args = new Bundle();
-        args.putString("hint", hint);
         args.putString(ARG_KEY, key);
 
-        FreeTextFragment fragment = new FreeTextFragment();
+        PostTextFragment fragment = new PostTextFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    public FreeTextFragment() {}
+    public PostTextFragment(){}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,20 +48,17 @@ public class FreeTextFragment extends Fragment {
 
         Bundle args = getArguments();
         mKey = args.getString(ARG_KEY);
-        mPage = (FreeTextPage) mCallbacks.onGetPage(mKey);
-        hintText = args.getString("hint");
+        mPage = (PostTextPage) mCallbacks.onGetPage(mKey);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_page_free_text, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_page_post_text, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
-        mNameView = ((EditText) rootView.findViewById(R.id.your_name));
-        mNameView.setText(mPage.getData().getString(FreeTextPage.NAME_DATA_KEY));
-        hint = ((TextView) rootView.findViewById(R.id.hint));
-        hint.setText(hintText);
-        
+        mTextView = ((EditText) rootView.findViewById(R.id.additionalInformation));
+        mTextView.setText(mPage.getData().getString(PostTextPage.TEXT_DATA_KEY));
+
         return rootView;
     }
 
@@ -83,7 +66,7 @@ public class FreeTextFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        if (!(((AppCompatActivity) activity).getSupportFragmentManager().getFragments().get(0) instanceof PageFragmentCallbacks)) {
+        if (!(((AppCompatActivity) activity).getSupportFragmentManager().getFragments().get(1) instanceof PageFragmentCallbacks)) {
             throw new ClassCastException("Activity must implement PageFragmentCallbacks");
         }
 
@@ -100,7 +83,7 @@ public class FreeTextFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mNameView.addTextChangedListener(new TextWatcher() {
+        mTextView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
@@ -109,10 +92,11 @@ public class FreeTextFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(FreeTextPage.NAME_DATA_KEY, (editable != null) ? editable.toString() : null);
+                mPage.getData().putString(PostTextPage.TEXT_DATA_KEY, (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }
         });
+
     }
 
     @Override
@@ -121,7 +105,7 @@ public class FreeTextFragment extends Fragment {
 
         // In a future update to the support library, this should override setUserVisibleHint
         // instead of setMenuVisibility.
-        if (mNameView != null) {
+        if (mTextView != null) {
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             if (!menuVisible) {
                 imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);

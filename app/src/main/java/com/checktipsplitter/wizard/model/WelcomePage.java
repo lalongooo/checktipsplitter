@@ -1,8 +1,8 @@
-package com.wizard.model;
+package com.checktipsplitter.wizard.model;
 
 import android.support.v4.app.Fragment;
 
-import com.wizard.ui.WelcomeFragment;
+import com.checktipsplitter.wizard.ui.WelcomeFragment;
 
 import java.util.ArrayList;
 

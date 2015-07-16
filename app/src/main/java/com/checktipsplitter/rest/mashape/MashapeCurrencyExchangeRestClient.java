@@ -1,6 +1,6 @@
 package com.checktipsplitter.rest.mashape;
 
-import com.checktipsplitter.config.Config;
+import com.checktipsplitter.Config;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;

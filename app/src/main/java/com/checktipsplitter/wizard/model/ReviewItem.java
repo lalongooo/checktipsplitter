@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.wizard.model;
+package com.checktipsplitter.wizard.model;
 
 /**
  * Represents a single line item on the final review page.
  *
- * @see com.wizard.ui.ReviewFragment
+ * @see com.checktipsplitter.wizard.ui.ReviewFragment
  */
 public class ReviewItem {
     public static final int DEFAULT_WEIGHT = 0;

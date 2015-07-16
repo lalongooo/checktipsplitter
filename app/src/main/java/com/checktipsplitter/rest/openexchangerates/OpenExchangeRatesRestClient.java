@@ -1,6 +1,6 @@
 package com.checktipsplitter.rest.openexchangerates;
 
-import com.checktipsplitter.config.Config;
+import com.checktipsplitter.Config;
 
 import retrofit.RestAdapter;
 

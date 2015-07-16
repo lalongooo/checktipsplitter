@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wizard.ui;
+package com.checktipsplitter.wizard.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -40,8 +40,8 @@ import com.checktipsplitter.model.City;
 import com.checktipsplitter.model.State;
 import com.checktipsplitter.model.Town;
 import com.checktipsplitter.ui.ActivityMain;
-import com.wizard.model.Page;
-import com.wizard.model.ProfessorCityToPage;
+import com.checktipsplitter.wizard.model.Page;
+import com.checktipsplitter.wizard.model.ProfessorCityToPage;
 
 import java.util.ArrayList;
 

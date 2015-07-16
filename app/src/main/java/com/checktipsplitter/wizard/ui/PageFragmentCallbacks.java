@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.wizard.ui;
+package com.checktipsplitter.wizard.ui;
 
-import com.wizard.model.Page;
+import com.checktipsplitter.wizard.model.Page;
 
 public interface PageFragmentCallbacks {
     Page onGetPage(String key);
