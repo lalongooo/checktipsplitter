@@ -5,22 +5,20 @@ package com.checktipsplitter.model;
 * */
 
 public class Currency {
+
     private String mQuoteKey;
     private String mQuoteDescription;
+
+    public Currency(String quoteKey, String quoteDescription) {
+        this.mQuoteKey = quoteKey;
+        this.mQuoteDescription = quoteDescription;
+    }
 
     public String getQuoteKey() {
         return mQuoteKey;
     }
 
-    public void setQuoteKey(String quoteKey) {
-        mQuoteKey = quoteKey;
-    }
-
     public String getQuoteDescription() {
         return mQuoteDescription;
-    }
-
-    public void setQuoteDescription(String quoteDescription) {
-        mQuoteDescription = quoteDescription;
     }
 }
