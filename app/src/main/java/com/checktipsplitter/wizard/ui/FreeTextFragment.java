@@ -22,7 +22,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,7 +75,7 @@ public class FreeTextFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
         mNameView = ((EditText) rootView.findViewById(R.id.your_name));
-        mNameView.setText(mPage.getData().getString(FreeTextPage.NAME_DATA_KEY));
+        mNameView.setText(mPage.getData().getString(FreeTextPage.DATA_KEY));
         mNameView.setInputType(inputType);
         hint = ((TextView) rootView.findViewById(R.id.hint));
         hint.setText(hintText);
@@ -114,7 +113,7 @@ public class FreeTextFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(FreeTextPage.NAME_DATA_KEY, (editable != null) ? editable.toString() : null);
+                mPage.getData().putString(FreeTextPage.DATA_KEY, (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }
         });

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class FreeTextPage extends Page {
 
-    public static String NAME_DATA_KEY;
+    public static String DATA_KEY;
     private String displayText;
     private String hint;
     private int inputType;
@@ -33,7 +33,7 @@ public class FreeTextPage extends Page {
 
     public FreeTextPage(ModelCallbacks callbacks, String title, String dataKey, String reviewDisplayText, String hint, int inputType) {
         super(callbacks, title);
-        NAME_DATA_KEY = dataKey;
+        DATA_KEY = dataKey;
         displayText = reviewDisplayText;
         this.hint = hint;
         this.inputType = inputType;
@@ -46,11 +46,11 @@ public class FreeTextPage extends Page {
 
     @Override
     public void getReviewItems(ArrayList<ReviewItem> dest) {
-        dest.add(new ReviewItem(displayText, mData.getString(NAME_DATA_KEY), getKey(), -1));
+        dest.add(new ReviewItem(displayText, mData.getString(DATA_KEY), getKey(), -1));
     }
 
     @Override
     public boolean isCompleted() {
-        return !TextUtils.isEmpty(mData.getString(NAME_DATA_KEY));
+        return !TextUtils.isEmpty(mData.getString(DATA_KEY));
     }
 }

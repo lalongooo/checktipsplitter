@@ -30,7 +30,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.checktipsplitter.R;
+import com.checktipsplitter.model.WizardModel;
 import com.checktipsplitter.wizard.model.AbstractWizardModel;
+import com.checktipsplitter.wizard.model.FreeTextPage;
 import com.checktipsplitter.wizard.model.ModelCallbacks;
 import com.checktipsplitter.wizard.model.Page;
 import com.checktipsplitter.wizard.model.ReviewItem;
@@ -102,12 +104,40 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
     @Override
     public void onPageDataChanged(Page changedPage) {
+
+        String sourceExchange = null;
+        String targetExchange = null;
+        double billAmount = 0;
+        int howMany = 0;
+        double gratificationPercent = 0;
+
         ArrayList<ReviewItem> reviewItems = new ArrayList<>();
         for (Page page : mWizardModel.getCurrentPageSequence()) {
             page.getReviewItems(reviewItems);
+
+            switch (page.getKey()){
+                case WizardModel.BASE_EXCHANGE:
+                    sourceExchange = page.getData().getString(Page.SIMPLE_DATA_KEY);
+                    break;
+                case WizardModel.TARGET_EXCHANGE:
+                    targetExchange = page.getData().getString(Page.SIMPLE_DATA_KEY);
+                    break;
+                case WizardModel.BILL_AMOUNT_KEY:
+                    billAmount = page.getData().getDouble(FreeTextPage.DATA_KEY);
+                    break;
+                case WizardModel.HOW_MANY_PAGE_KEY:
+                    howMany = page.getData().getInt(FreeTextPage.DATA_KEY);
+                    break;
+                case WizardModel.GRATIFICATION_AMOUNT_KEY:
+                    gratificationPercent = page.getData().getDouble(FreeTextPage.DATA_KEY);
+                    break;
+            }
         }
 
-        reviewItems.add(new ReviewItem("Total C/U", "10.0", FINAL_RESULT_PAGE_KEY));
+        double perc = billAmount * (gratificationPercent / 100);
+        double total = (billAmount + perc) / howMany;
+
+        reviewItems.add(new ReviewItem("Total C/U", String.valueOf(total), FINAL_RESULT_PAGE_KEY));
 
 
         mCurrentReviewItems = reviewItems;
