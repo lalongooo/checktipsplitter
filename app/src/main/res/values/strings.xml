@@ -18,6 +18,7 @@
     <string name="submit_confirm_message">Presiona Aceptar para publicar tu permuta</string>
     <string name="submit_confirm_button">Aceptar</string>
     <string name="review">Ir a Revisión</string>
+    <string name="review_title">Revisa tu información</string>
     <string name="time_ago_prefix"></string>
     <string name="time_ago_suffix"></string>
     <string name="time_ago_seconds">menos de un minuto</string>

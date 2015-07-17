@@ -25,11 +25,11 @@ public class WizardModel extends AbstractWizardModel {
         String[] currencyOptions = PrefUtils.getCurrencyValuesDescription(mContext);
 
         return new PageList(
-                new SingleFixedChoicePage(this, "Moneda").setChoices(currencyOptions).setRequired(true).setKey(ACADEMIC_LEVEL_KEY),
+                new SingleFixedChoicePage(this, "Moneda base").setChoices(currencyOptions).setRequired(true).setKey(ACADEMIC_LEVEL_KEY),
                 new FreeTextPage(this, "¿Cómo te llamas?", "your_name", "Tu nombre", "Nombre").setRequired(true).setKey(YOUR_NAME_PAGE_KEY),
                 new FreeTextPage(this, "¿Total de la cuenta?", "bill_amount", "Total de la cuenta", "Cuenta total").setRequired(true).setKey(BILL_AMOUNT_KEY),
-                new FreeTextPage(this, "¿Tu y cuántos más?", "how_many", "Personas", "Número de personas").setRequired(true).setKey(HOW_MANY_PAGE_KEY),
-                new FreeTextPage(this, "Porcentaje de propina", "gratification__amount", "Porcentaje", "% Propina").setRequired(true).setKey(GRATIFICATION_AMOUNT_KEY)
+                new FreeTextPage(this, "¿Tu y cuántos más?", "how_many", "No. Personas", "Número de personas").setRequired(true).setKey(HOW_MANY_PAGE_KEY),
+                new FreeTextPage(this, "Porcentaje de propina", "gratification__amount", "% Propina", "Porcentaje").setRequired(true).setKey(GRATIFICATION_AMOUNT_KEY)
         );
     }
 }
