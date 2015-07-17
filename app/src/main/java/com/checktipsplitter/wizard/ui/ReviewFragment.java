@@ -17,6 +17,7 @@
 package com.checktipsplitter.wizard.ui;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -39,10 +40,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewFragment extends ListFragment implements ModelCallbacks {
+
+    private static final String FINAL_RESULT_PAGE_KEY = "final_result_page_key";
     private Callbacks mCallbacks;
     private AbstractWizardModel mWizardModel;
     private List<ReviewItem> mCurrentReviewItems;
-
     private ReviewAdapter mReviewAdapter;
 
     public ReviewFragment() {
@@ -56,7 +58,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_page, container, false);
 
         TextView titleView = (TextView) rootView.findViewById(android.R.id.title);
@@ -77,7 +79,8 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
             throw new ClassCastException("Activity must implement fragment's callbacks");
         }
 
-        mCallbacks = (Callbacks) ((ActivityMain) activity).getSupportFragmentManager().getFragments().get(0);;
+        mCallbacks = (Callbacks) ((ActivityMain) activity).getSupportFragmentManager().getFragments().get(0);
+        ;
 
         mWizardModel = mCallbacks.onGetModel();
         mWizardModel.registerListener(this);
@@ -99,16 +102,14 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
     @Override
     public void onPageDataChanged(Page changedPage) {
-        ArrayList<ReviewItem> reviewItems = new ArrayList<ReviewItem>();
+        ArrayList<ReviewItem> reviewItems = new ArrayList<>();
         for (Page page : mWizardModel.getCurrentPageSequence()) {
             page.getReviewItems(reviewItems);
         }
-//        Collections.sort(reviewItems, new Comparator<ReviewItem>() {
-//            @Override
-//            public int compare(ReviewItem a, ReviewItem b) {
-//                return a.getWeight() > b.getWeight() ? +1 : a.getWeight() < b.getWeight() ? -1 : 0;
-//            }
-//        });
+
+        reviewItems.add(new ReviewItem("Total C/U", "10.0", FINAL_RESULT_PAGE_KEY));
+
+
         mCurrentReviewItems = reviewItems;
 
         if (mReviewAdapter != null) {
@@ -123,6 +124,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
     public interface Callbacks {
         AbstractWizardModel onGetModel();
+
         void onEditScreenAfterReview(String pageKey);
     }
 
@@ -167,8 +169,20 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
             if (TextUtils.isEmpty(value)) {
                 value = "(None)";
             }
-            ((TextView) rootView.findViewById(android.R.id.text1)).setText(reviewItem.getTitle());
-            ((TextView) rootView.findViewById(android.R.id.text2)).setText(value);
+
+            TextView tv1 = (TextView) rootView.findViewById(android.R.id.text1);
+            tv1.setText(reviewItem.getTitle().toUpperCase());
+            TextView tv2 = (TextView) rootView.findViewById(android.R.id.text2);
+            tv2.setText(value);
+
+            if (reviewItem.getPageKey().equals(FINAL_RESULT_PAGE_KEY)) {
+                tv1.setTextAppearance(getActivity(), R.style.TextAppearance_AppCompat_Medium);
+                tv1.setTextColor(getResources().getColor(R.color.blue_main));
+                tv1.setTypeface(Typeface.DEFAULT_BOLD);
+                tv2.setTextColor(getResources().getColor(R.color.blue_main));
+                tv2.setTypeface(Typeface.DEFAULT_BOLD);
+            }
+
             return rootView;
         }
 

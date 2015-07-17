@@ -30,10 +30,10 @@
         style="?android:textAppearanceSmall"
         android:layout_width="120sp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ellipsize="end"
-        android:textAllCaps="true"
+        android:text="Hello world"
         android:textColor="@color/text_light"
         android:textStyle="bold" />
 
@@ -41,6 +41,7 @@
         android:id="@android:id/text2"
         style="?android:textAppearanceMedium"
         android:layout_width="0dp"
+        android:text="Hello world"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
