@@ -28,18 +28,20 @@ public class FreeTextPage extends Page {
     public static String NAME_DATA_KEY;
     private String displayText;
     private String hint;
+    private int inputType;
 
 
-    public FreeTextPage(ModelCallbacks callbacks, String title, String dataKey, String reviewDisplayText, String hint) {
+    public FreeTextPage(ModelCallbacks callbacks, String title, String dataKey, String reviewDisplayText, String hint, int inputType) {
         super(callbacks, title);
         NAME_DATA_KEY = dataKey;
         displayText = reviewDisplayText;
         this.hint = hint;
+        this.inputType = inputType;
     }
 
     @Override
     public Fragment createFragment() {
-        return FreeTextFragment.create(getKey(), hint);
+        return FreeTextFragment.create(getKey(), hint, inputType);
     }
 
     @Override

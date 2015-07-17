@@ -1,6 +1,7 @@
 package com.checktipsplitter.model;
 
 import android.content.Context;
+import android.text.InputType;
 
 import com.checktipsplitter.utils.PrefUtils;
 import com.checktipsplitter.wizard.model.AbstractWizardModel;
@@ -26,10 +27,10 @@ public class WizardModel extends AbstractWizardModel {
 
         return new PageList(
                 new SingleFixedChoicePage(this, "Moneda base").setChoices(currencyOptions).setRequired(true).setKey(ACADEMIC_LEVEL_KEY),
-                new FreeTextPage(this, "¿Cómo te llamas?", "your_name", "Tu nombre", "Nombre").setRequired(true).setKey(YOUR_NAME_PAGE_KEY),
-                new FreeTextPage(this, "¿Total de la cuenta?", "bill_amount", "Total de la cuenta", "Cuenta total").setRequired(true).setKey(BILL_AMOUNT_KEY),
-                new FreeTextPage(this, "¿Tu y cuántos más?", "how_many", "No. Personas", "Número de personas").setRequired(true).setKey(HOW_MANY_PAGE_KEY),
-                new FreeTextPage(this, "Porcentaje de propina", "gratification__amount", "% Propina", "Porcentaje").setRequired(true).setKey(GRATIFICATION_AMOUNT_KEY)
+                new FreeTextPage(this, "¿Cómo te llamas?", "your_name", "Tu nombre", "Nombre", InputType.TYPE_CLASS_TEXT).setRequired(true).setKey(YOUR_NAME_PAGE_KEY),
+                new FreeTextPage(this, "¿Total de la cuenta?", "bill_amount", "Total de la cuenta", "Cuenta total", InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED).setRequired(true).setKey(BILL_AMOUNT_KEY),
+                new FreeTextPage(this, "¿Tu y cuántos más?", "how_many", "No. Personas", "Número de personas", InputType.TYPE_CLASS_NUMBER).setRequired(true).setKey(HOW_MANY_PAGE_KEY),
+                new FreeTextPage(this, "Porcentaje de propina", "gratification__amount", "% Propina", "Porcentaje", InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED).setRequired(true).setKey(GRATIFICATION_AMOUNT_KEY)
         );
     }
 }
