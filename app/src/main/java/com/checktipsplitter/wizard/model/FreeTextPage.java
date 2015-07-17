@@ -23,9 +23,6 @@ import com.checktipsplitter.wizard.ui.FreeTextFragment;
 
 import java.util.ArrayList;
 
-/**
- * A page asking for a name and an email.
- */
 public class FreeTextPage extends Page {
 
     public static String NAME_DATA_KEY;
