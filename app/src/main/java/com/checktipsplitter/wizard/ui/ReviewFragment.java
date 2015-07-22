@@ -30,7 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.checktipsplitter.R;
-import com.checktipsplitter.model.WizardModel;
+import com.checktipsplitter.wizard.model.WizardModel;
 import com.checktipsplitter.rest.mashape.MashapeCurrencyExchangeRestClient;
 import com.checktipsplitter.utils.PrefUtils;
 import com.checktipsplitter.wizard.model.AbstractWizardModel;

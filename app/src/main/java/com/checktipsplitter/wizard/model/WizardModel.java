@@ -1,13 +1,9 @@
-package com.checktipsplitter.model;
+package com.checktipsplitter.wizard.model;
 
 import android.content.Context;
 import android.text.InputType;
 
 import com.checktipsplitter.utils.PrefUtils;
-import com.checktipsplitter.wizard.model.AbstractWizardModel;
-import com.checktipsplitter.wizard.model.FreeTextPage;
-import com.checktipsplitter.wizard.model.PageList;
-import com.checktipsplitter.wizard.model.SingleFixedChoicePage;
 
 public class WizardModel extends AbstractWizardModel {
     public static final String BASE_EXCHANGE = "base_exchange";

@@ -33,7 +33,7 @@ import android.widget.Button;
 
 import com.checktipsplitter.BaseFragment;
 import com.checktipsplitter.R;
-import com.checktipsplitter.model.WizardModel;
+import com.checktipsplitter.wizard.model.WizardModel;
 import com.checktipsplitter.wizard.model.AbstractWizardModel;
 import com.checktipsplitter.wizard.model.ModelCallbacks;
 import com.checktipsplitter.wizard.model.Page;
