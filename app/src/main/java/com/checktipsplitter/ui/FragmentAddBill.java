@@ -119,6 +119,7 @@ public class FragmentAddBill extends BaseFragment implements
                                     .setPositiveButton(R.string.submit_confirm_button, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            getActivity().finish();
                                         }
                                     })
                                     .setNegativeButton(android.R.string.cancel, null)

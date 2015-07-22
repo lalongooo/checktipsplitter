@@ -3,7 +3,7 @@
     <string name="app_name">CheckTip+Splitter</string>
     <string name="next">Siguiente</string>
     <string name="prev">Regresar</string>
-    <string name="finish">Guardar</string>
+    <string name="finish">Listo</string>
     <string name="label_your_name">Tu nombre</string>
     <string name="wizard_post_text_label">Información adicional</string>
     <string name="wizard_post_text_hint">p. ej. "Escuela bien ubicada"</string>
@@ -15,7 +15,7 @@
     <string name="action_search">Buscar</string>
     <string name="action_logout">Cerrar sesión</string>
     <string name="action_about">Acerca de</string>
-    <string name="submit_confirm_message">Presiona Aceptar para confirmar que la información es correcta</string>
+    <string name="submit_confirm_message">Presiona Aceptar para salir de la aplicación</string>
     <string name="submit_confirm_button">Aceptar</string>
     <string name="review">Ir a Revisión</string>
     <string name="review_title">Revisa tu información</string>

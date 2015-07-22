@@ -17,6 +17,7 @@
 package com.checktipsplitter.wizard.model;
 
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.text.TextUtils;
 
 import com.checktipsplitter.wizard.ui.FreeTextFragment;
@@ -51,6 +52,6 @@ public class FreeTextPage extends Page {
 
     @Override
     public boolean isCompleted() {
-        return !TextUtils.isEmpty(mData.getString(DATA_KEY));
+        return inputType == InputType.TYPE_CLASS_NUMBER ? Float.valueOf(mData.getString(DATA_KEY)) > 0 : !TextUtils.isEmpty(mData.getString(DATA_KEY));
     }
 }
