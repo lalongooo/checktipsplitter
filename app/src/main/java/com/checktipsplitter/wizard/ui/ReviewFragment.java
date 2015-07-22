@@ -123,13 +123,13 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
                     targetExchange = page.getData().getString(Page.SIMPLE_DATA_KEY);
                     break;
                 case WizardModel.BILL_AMOUNT_KEY:
-                    billAmount = page.getData().getDouble(FreeTextPage.DATA_KEY);
+                    billAmount = Double.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
                     break;
                 case WizardModel.HOW_MANY_PAGE_KEY:
-                    howMany = page.getData().getInt(FreeTextPage.DATA_KEY);
+                    howMany = Integer.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
                     break;
                 case WizardModel.GRATIFICATION_AMOUNT_KEY:
-                    gratificationPercent = page.getData().getDouble(FreeTextPage.DATA_KEY);
+                    gratificationPercent = Double.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
                     break;
             }
         }
