@@ -71,4 +71,33 @@ public class PrefUtils {
 
         return Calendar.getInstance().after(lastSyncCal);
     }
+
+    private static String LAST_EXCHANGE_SYNC_PREFIX = "_";
+
+    public static boolean shouldSyncExchangeConversion(final Context context, String exchangeSource, String exchangeTarget) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+
+        Date lastSyncDate = new Date(sp.getLong(LAST_EXCHANGE_SYNC_PREFIX + exchangeSource + exchangeTarget, 0));
+
+        Calendar lastSyncCal = Calendar.getInstance();
+        lastSyncCal.setTime(lastSyncDate);
+        lastSyncCal.add(Calendar.SECOND, Config.EXCHANGE_RATES_SYNC_TIME_INTERVAL);
+
+        return Calendar.getInstance().after(lastSyncCal);
+    }
+
+    public static void saveLastExchangeConversionSync(final Context context, String exchangeSource, String exchangeTarget) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        sp.edit().putLong(LAST_EXCHANGE_SYNC_PREFIX + exchangeSource + exchangeTarget, new Date().getTime()).apply();
+    }
+
+    public static void saveExchangeConversion(final Context context, String exchangeSource, String exchangeTarget, float exchangeValue) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        sp.edit().putFloat(exchangeSource + exchangeTarget, exchangeValue).apply();
+    }
+
+    public static float getSavedExchangeConversion(final Context context, String exchangeSource, String exchangeTarget) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        return sp.getFloat(exchangeSource + exchangeTarget, 0);
+    }
 }

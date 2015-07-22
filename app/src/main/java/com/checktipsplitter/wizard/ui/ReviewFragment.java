@@ -31,6 +31,8 @@ import android.widget.TextView;
 
 import com.checktipsplitter.R;
 import com.checktipsplitter.model.WizardModel;
+import com.checktipsplitter.rest.mashape.MashapeCurrencyExchangeRestClient;
+import com.checktipsplitter.utils.PrefUtils;
 import com.checktipsplitter.wizard.model.AbstractWizardModel;
 import com.checktipsplitter.wizard.model.FreeTextPage;
 import com.checktipsplitter.wizard.model.ModelCallbacks;
@@ -40,6 +42,10 @@ import com.checktipsplitter.ui.ActivityMain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
@@ -82,8 +88,6 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
         }
 
         mCallbacks = (Callbacks) ((ActivityMain) activity).getSupportFragmentManager().getFragments().get(0);
-        ;
-
         mWizardModel = mCallbacks.onGetModel();
         mWizardModel.registerListener(this);
         onPageTreeChanged();
@@ -102,43 +106,82 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
         mWizardModel.unregisterListener(this);
     }
 
+    class CheckTipSplitter {
+        String sourceExchange = null;
+        String targetExchange = null;
+        float billAmount = 0;
+        int howMany = 0;
+        float gratificationPercent = 0;
+    }
+
     @Override
     public void onPageDataChanged(Page changedPage) {
 
-        String sourceExchange = null;
-        String targetExchange = null;
-        double billAmount = 0;
-        int howMany = 0;
-        double gratificationPercent = 0;
-
-        ArrayList<ReviewItem> reviewItems = new ArrayList<>();
+        final ArrayList<ReviewItem> reviewItems = new ArrayList<ReviewItem>();
         for (Page page : mWizardModel.getCurrentPageSequence()) {
             page.getReviewItems(reviewItems);
+        }
 
-            switch (page.getKey()){
+        final CheckTipSplitter cts = new CheckTipSplitter();
+
+        for (Page page : mWizardModel.getCurrentPageSequence()) {
+            switch (page.getKey()) {
                 case WizardModel.BASE_EXCHANGE:
-                    sourceExchange = page.getData().getString(Page.SIMPLE_DATA_KEY);
+                    cts.sourceExchange = page.getData().getString(Page.SIMPLE_DATA_KEY);
                     break;
                 case WizardModel.TARGET_EXCHANGE:
-                    targetExchange = page.getData().getString(Page.SIMPLE_DATA_KEY);
+                    cts.targetExchange = page.getData().getString(Page.SIMPLE_DATA_KEY);
                     break;
                 case WizardModel.BILL_AMOUNT_KEY:
-                    billAmount = Double.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
+                    cts.billAmount = Float.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
                     break;
                 case WizardModel.HOW_MANY_PAGE_KEY:
-                    howMany = Integer.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
+                    cts.howMany = Integer.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
                     break;
                 case WizardModel.GRATIFICATION_AMOUNT_KEY:
-                    gratificationPercent = Double.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
+                    cts.gratificationPercent = Float.valueOf(page.getData().get(FreeTextPage.DATA_KEY).toString());
                     break;
             }
         }
 
-        double perc = billAmount * (gratificationPercent / 100);
-        double total = (billAmount + perc) / howMany;
+        float percentage = cts.billAmount * (cts.gratificationPercent / 100);
+        final float total = (cts.billAmount + percentage) / cts.howMany;
 
         reviewItems.add(new ReviewItem("Total C/U", String.valueOf(total), FINAL_RESULT_PAGE_KEY));
 
+        if (PrefUtils.shouldSyncExchangeConversion(getActivity(), cts.sourceExchange.substring(0, 3), cts.targetExchange.substring(0, 3))) {
+
+            MashapeCurrencyExchangeRestClient.get().exchange(cts.sourceExchange.substring(0, 3), cts.targetExchange.substring(0, 3), new Callback<Float>() {
+                @Override
+                public void success(Float aFloat, Response response) {
+
+                    reviewItems.add(new ReviewItem("Total " + cts.targetExchange.substring(0, 3), String.valueOf(Float.valueOf(total * aFloat)), FINAL_RESULT_PAGE_KEY));
+                    mReviewAdapter.notifyDataSetChanged();
+                    PrefUtils.saveLastExchangeConversionSync(getActivity(), cts.sourceExchange.substring(0, 3), cts.targetExchange.substring(0, 3));
+                    PrefUtils.saveExchangeConversion(getActivity(), cts.sourceExchange.substring(0, 3), cts.targetExchange.substring(0, 3), aFloat);
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+
+                    float savedExchangeConversion = PrefUtils.getSavedExchangeConversion(getActivity(), cts.sourceExchange.substring(0, 3), cts.targetExchange.substring(0, 3));
+                    reviewItems.add(new ReviewItem("Total " + cts.targetExchange.substring(0, 3), String.valueOf(total * savedExchangeConversion), FINAL_RESULT_PAGE_KEY));
+                    if (mReviewAdapter != null) {
+                        mReviewAdapter.notifyDataSetChanged();
+                    }
+
+                }
+            });
+
+        } else {
+
+            float savedExchangeConversion = PrefUtils.getSavedExchangeConversion(getActivity(), cts.sourceExchange.substring(0, 3), cts.targetExchange.substring(0, 3));
+            reviewItems.add(new ReviewItem("Total " + cts.targetExchange.substring(0, 3), String.valueOf(total * savedExchangeConversion), FINAL_RESULT_PAGE_KEY));
+            if (mReviewAdapter != null) {
+                mReviewAdapter.notifyDataSetChanged();
+            }
+
+        }
 
         mCurrentReviewItems = reviewItems;
 
