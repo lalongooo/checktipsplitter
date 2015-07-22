@@ -15,7 +15,7 @@
     <string name="action_search">Buscar</string>
     <string name="action_logout">Cerrar sesión</string>
     <string name="action_about">Acerca de</string>
-    <string name="submit_confirm_message">Presiona Aceptar para publicar tu permuta</string>
+    <string name="submit_confirm_message">Presiona Aceptar para confirmar que la información es correcta</string>
     <string name="submit_confirm_button">Aceptar</string>
     <string name="review">Ir a Revisión</string>
     <string name="review_title">Revisa tu información</string>
