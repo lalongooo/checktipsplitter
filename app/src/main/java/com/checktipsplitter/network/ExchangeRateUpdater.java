@@ -31,23 +31,28 @@ public class ExchangeRateUpdater {
 
     public static void updateExchangeRates(final Context context, final OnExchangeRateSyncComplete[] listeners) {
         if (PrefUtils.shouldSyncExchangeRates(context)) {
+
+            // First call to the Mashape Currency Exchange API to retrieve the list quotes
             MashapeCurrencyExchangeRestClient.get().getListQuotes(new Callback<ArrayList<String>>() {
                 @Override
                 public void success(final ArrayList<String> strings, Response response) {
+
+                    // Second call to the Open Exchange Rates API to retrieve the quotes descriptions
                     OpenExchangeRatesRestClient.get().getCurrencies(new ResponseCallback() {
                         @Override
                         public void success(Response response) {
 
-                            List<Currency> currencies = new ArrayList<>();
-
+                            // The quotes descriptions are stored in a json file, so we read that content as a string.
                             String responseText = new String(
                                     ((TypedByteArray) response.getBody()).getBytes()
                             );
 
+                            // Parse the content to JSON.
                             JsonObject jsonObject = new JsonParser()
                                     .parse(responseText)
                                     .getAsJsonObject();
 
+                            List<Currency> currencies = new ArrayList<>();
                             for (Map.Entry entry : jsonObject.entrySet()) {
                                 JsonElement jsonElement = (JsonElement) entry.getValue();
 
@@ -55,7 +60,6 @@ public class ExchangeRateUpdater {
                                     currencies.add(new Currency(entry.getKey().toString(), jsonElement.getAsString()));
                                 }
                             }
-
 
                             PrefUtils.saveLastExchangeRateSync(context);
                             PrefUtils.saveCurrencyValuesDescription(context, new Gson().toJson(currencies));
