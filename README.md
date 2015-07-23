@@ -9,10 +9,11 @@ It make use of the following free API's:
 
 ...and the following android open source libraries:
 
-- Restrofit
-- OkHttp
-- ViewPagerLibrary
+- [Restrofit](http://square.github.io/retrofit/)
+- [OkHttp](http://square.github.io/okhttp/)
+- [Android-WizardPager](https://github.com/romannurik/Android-WizardPager)
 
+Some screenshots of the application:
 
 ![Image](https://raw.githubusercontent.com/lalongooo/checktipsplitter/master/screenshots/Screenshot_2015-07-23-15-11-54.png)
 ![Image](https://raw.githubusercontent.com/lalongooo/checktipsplitter/master/screenshots/Screenshot_2015-07-23-15-12-16.png)
