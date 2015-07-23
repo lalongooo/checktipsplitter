@@ -10,41 +10,14 @@ android {
         targetSdkVersion 21
     }
 
-    signingConfigs{
-
-        releaseConfig{
-            storeFile file(com_permutassep_release_keystore_file);
-            storePassword(com_permutassep_release_keystore_password);
-            keyAlias(com_permutassep_release_key_alias);
-            keyPassword(com_permutassep_release_key_password);
-        }
-    }
-
     buildTypes {
 
         debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            buildConfigField "String", "com_permutassep_api_rest_endpoint", com_permutassep_debug_api_rest_endpoint
-            buildConfigField "String", "com_permutassep_api_rest_user", com_permutassep_debug_api_rest_user
-            buildConfigField "String", "com_permutassep_api_rest_password", com_permutassep_debug_api_rest_password
-            buildConfigField "String", "com_permutassep_fb_login_dummy_password", com_permutassep_debug_fb_login_dummy_password
-            buildConfigField "String", "google_analytics_property_id", google_analytics_property_id
-            resValue "string", "google_maps_api_key", google_maps_api_key
-            resValue "string", "facebook_app_id", facebook_app_id
         }
 
         release {
-            signingConfig signingConfigs.releaseConfig
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            buildConfigField "String", "com_permutassep_api_rest_endpoint", com_permutassep_release_api_rest_endpoint
-            buildConfigField "String", "com_permutassep_api_rest_user", com_permutassep_release_api_rest_user
-            buildConfigField "String", "com_permutassep_api_rest_password", com_permutassep_release_api_rest_password
-            buildConfigField "String", "com_permutassep_fb_login_dummy_password", com_permutassep_release_fb_login_dummy_password
-            buildConfigField "String", "google_analytics_property_id", google_analytics_property_id
-            resValue "string", "google_maps_api_key", google_maps_api_key
-            resValue "string", "facebook_app_id", facebook_app_id
         }
     }
 }
