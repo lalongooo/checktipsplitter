@@ -9,7 +9,7 @@ It make use of the following free API's:
 
 ...and the following android open source libraries:
 
-- [Restrofit](http://square.github.io/retrofit/)
+- [Retrofit](http://square.github.io/retrofit/)
 - [OkHttp](http://square.github.io/okhttp/)
 - [Android-WizardPager](https://github.com/romannurik/Android-WizardPager)
 
