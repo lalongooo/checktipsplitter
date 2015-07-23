@@ -22,6 +22,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +42,8 @@ public class FreeTextFragment extends Fragment {
     private PageFragmentCallbacks mCallbacks;
     private String mKey;
     private FreeTextPage mPage;
-    private TextView  hint;
-    private EditText mNameView;
+    private TextView hint;
+    private EditText mEditText;
     private String hintText;
     private int inputType;
 
@@ -56,7 +58,8 @@ public class FreeTextFragment extends Fragment {
         return fragment;
     }
 
-    public FreeTextFragment() {}
+    public FreeTextFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,12 +77,12 @@ public class FreeTextFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_page_free_text, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
-        mNameView = ((EditText) rootView.findViewById(R.id.your_name));
-        mNameView.setText(mPage.getData().getString(FreeTextPage.DATA_KEY));
-        mNameView.setInputType(inputType);
+        mEditText = ((EditText) rootView.findViewById(R.id.your_name));
+        mEditText.setText(mPage.getData().getString(FreeTextPage.DATA_KEY));
+        mEditText.setInputType(inputType);
         hint = ((TextView) rootView.findViewById(R.id.hint));
         hint.setText(hintText);
-        
+
         return rootView;
     }
 
@@ -104,16 +107,24 @@ public class FreeTextFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mNameView.addTextChangedListener(new TextWatcher() {
+        mEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(FreeTextPage.DATA_KEY, (editable != null) ? editable.toString() : null);
+                if (inputType == (InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL)) {
+                    mPage.getData().putString(FreeTextPage.DATA_KEY, (!TextUtils.isEmpty(editable.toString())) ? String.valueOf(Float.valueOf(editable.toString())) : null);
+                } else if (inputType == InputType.TYPE_CLASS_NUMBER) {
+                    mPage.getData().putString(FreeTextPage.DATA_KEY, (!TextUtils.isEmpty(editable.toString())) ? String.valueOf(Integer.valueOf(editable.toString())) : null);
+                } else {
+                    mPage.getData().putString(FreeTextPage.DATA_KEY, (editable != null) ? editable.toString() : null);
+                }
                 mPage.notifyDataChanged();
             }
         });
@@ -125,7 +136,7 @@ public class FreeTextFragment extends Fragment {
 
         // In a future update to the support library, this should override setUserVisibleHint
         // instead of setMenuVisibility.
-        if (mNameView != null) {
+        if (mEditText != null) {
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             if (!menuVisible) {
                 imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);

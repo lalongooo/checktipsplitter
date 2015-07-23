@@ -52,6 +52,11 @@ public class FreeTextPage extends Page {
 
     @Override
     public boolean isCompleted() {
-        return inputType == InputType.TYPE_CLASS_NUMBER ? Float.valueOf(mData.getString(DATA_KEY)) > 0 : !TextUtils.isEmpty(mData.getString(DATA_KEY));
+
+        if(inputType == (InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL) || inputType == InputType.TYPE_CLASS_NUMBER){
+            return !TextUtils.isEmpty(mData.getString(DATA_KEY)) && Float.valueOf(mData.getString(DATA_KEY)) > 0;
+        }
+
+        return !TextUtils.isEmpty(mData.getString(DATA_KEY) != null ? mData.getString(DATA_KEY).trim() : mData.getString(DATA_KEY));
     }
 }

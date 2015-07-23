@@ -246,7 +246,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
             TextView tv1 = (TextView) rootView.findViewById(android.R.id.text1);
             tv1.setText(reviewItem.getTitle().toUpperCase());
             TextView tv2 = (TextView) rootView.findViewById(android.R.id.text2);
-            tv2.setText(value);
+            tv2.setText(value.trim());
 
             if (reviewItem.getPageKey().equals(FINAL_RESULT_PAGE_KEY)) {
                 tv1.setTextAppearance(getActivity(), R.style.TextAppearance_AppCompat_Medium);
