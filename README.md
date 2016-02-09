@@ -2,7 +2,7 @@
 
 An android application that helps you to split the bill with your family and friends (or whoever you want).
 
-[![Download from Google Play](https://developer.android.com/images/brand/en_app_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.checktipsplitter)
+[![Descargar de Google Play](http://steverichey.github.io/google-play-badge-svg/img/es_get.svg)](https://play.google.com/store/apps/details?id=com.checktipsplitter)
 
 It make use of the following free API's:
 
